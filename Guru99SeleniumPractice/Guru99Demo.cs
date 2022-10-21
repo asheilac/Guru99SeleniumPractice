@@ -38,6 +38,19 @@ namespace Guru99SeleniumPractice
             Assert.That(title, Is.EqualTo("Software Testing Tutorial"));
         }
 
+        [Test]
+        public void TestCanGoToAdmiraltyAndClickAccessibility()
+        {
+            driver.Url = "https://www.admiralty.co.uk/";
+
+            IWebElement accessibilityElement =
+                driver.FindElement(By.XPath("/html/body/div[1]/div[3]/footer/div/div/div/div[2]/ul/li[1]/a"));
+            accessibilityElement.Click();
+
+            string title = driver.Title;
+
+            Assert.That(title, Is.EqualTo("Accessibility | ADMIRALTY"));
+        }
 
         [TearDown]
         public void CloseBrowser()
