@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using NUnit.Framework;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
+using OpenQA.Selenium.Support.UI;
 
 namespace Guru99SeleniumPractice
 {
@@ -50,6 +51,21 @@ namespace Guru99SeleniumPractice
             string title = driver.Title;
 
             Assert.That(title, Is.EqualTo("Accessibility | ADMIRALTY"));
+        }
+
+        [Test]
+        public void TestCanGoToDemoBlazeAndClickCart()
+        {
+            driver.Url = "https://www.demoblaze.com/index.html";
+            driver.Manage().Window.Maximize();
+
+            IWebElement cartElement = driver.FindElement(By.XPath("//*[@id=\"cartur\"]"));
+
+            cartElement.Click();
+
+            string title = driver.Title;
+
+            Assert.That(title, Is.EqualTo("STORE"));
         }
 
         [TearDown]
