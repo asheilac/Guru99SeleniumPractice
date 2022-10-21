@@ -1,12 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using NUnit.Framework;
+﻿using NUnit.Framework;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
-using OpenQA.Selenium.Support.UI;
+using OpenQA.Selenium.Interactions;
 
 namespace Guru99SeleniumPractice
 {
@@ -43,9 +38,14 @@ namespace Guru99SeleniumPractice
         public void TestCanGoToAdmiraltyAndClickAccessibility()
         {
             driver.Url = "https://www.admiralty.co.uk/";
-
+            driver.Manage().Window.Maximize();
+            
             IWebElement accessibilityElement =
                 driver.FindElement(By.XPath("/html/body/div[1]/div[3]/footer/div/div/div/div[2]/ul/li[1]/a"));
+
+            Actions action = new Actions(driver);
+            action.MoveToElement(accessibilityElement);
+
             accessibilityElement.Click();
 
             string title = driver.Title;
